@@ -1,239 +1,711 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Explora Turquía - Tours y Experiencias | Get Your Guide</title>
-  <style>
-    body, html {
-      margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f9fc;
-      color: #222;
-      scroll-behavior: smooth;
-    }
-    a {
-      text-decoration: none; color: #0071c2;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre el Mundo - Experiencias Únicas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .hero {
-      position: relative;
-      height: 80vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-    .hero video {
-      position: absolute;
-      top: 50%; left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -1;
-      transform: translate(-50%, -50%);
-      filter: brightness(0.6);
-      object-fit: cover;
-    }
-    .hero-content {
-      z-index: 2;
-      max-width: 700px;
-      padding: 0 20px;
-    }
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 0.3em;
-      font-weight: 700;
-      text-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
-    .hero-content p {
-      font-size: 1.4rem;
-      margin-bottom: 1.5em;
-      text-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    .btn-primary {
-      background-color: #0071c2;
-      padding: 0.9em 2.2em;
-      border-radius: 30px;
-      font-weight: 600;
-      color: white;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,113,194,0.4);
-      transition: background-color 0.3s ease;
-    }
-    .btn-primary:hover {
-      background-color: #005a9e;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
 
-    .tours-section {
-      max-width: 1100px;
-      margin: 40px auto 80px auto;
-      padding: 0 20px;
-    }
-    .tours-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1em;
-      text-align: center;
-      color: #0071c2;
-    }
-    .tours-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-    .tour-card {
-      background-color: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .tour-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-    .tour-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .tour-info {
-      padding: 15px 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .tour-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.4em;
-      color: #222;
-    }
-    .tour-desc {
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 1em;
-      flex-grow: 1;
-    }
-    .tour-link {
-      align-self: flex-start;
-      font-weight: 600;
-      color: #0071c2;
-      border: 1.5px solid #0071c2;
-      padding: 8px 16px;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-    .tour-link:hover {
-      background-color: #0071c2;
-      color: white;
-    }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    footer {
-      background-color: #0071c2;
-      color: white;
-      text-align: center;
-      padding: 18px 10px;
-      font-size: 0.9rem;
-      user-select: none;
-    }
+        /* ESTILOS PARA TU VIDEO - COPIA ESTO */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0;
+            opacity: 0.3; /* Ajusta entre 0.2-0.5 según tu video */
+        }
 
-    @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .hero-content p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+        .hero-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102,126,234,0.7) 0%, rgba(118,75,162,0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            animation: wave 8s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.3); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.5); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            transform: translateY(0);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+            background: linear-gradient(45deg, #ee5a52, #ff6b6b);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 15%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { width: 60px; height: 60px; bottom: 30%; left: 20%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { width: 90px; height: 90px; top: 70%; left: 60%; animation-delay: 1s; }
+        .floating-element:nth-child(5) { width: 50px; height: 50px; top: 30%; right: 30%; animation-delay: 3s; }
+        .floating-element:nth-child(6) { width: 110px; height: 110px; bottom: 20%; right: 10%; animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { 
+                text-shadow: 0 0 20px rgba(102,126,234,0.3);
+                transform: translateY(0);
+            }
+            to { 
+                text-shadow: 0 0 30px rgba(102,126,234,0.5);
+                transform: translateY(-2px);
+            }
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: lineExpand 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes lineExpand {
+            from { width: 50px; }
+            to { width: 150px; }
+        }
+
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0) scale(1);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: height 0.3s ease;
+        }
+
+        .experience-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(102,126,234,0.25);
+        }
+
+        .experience-card:hover::before {
+            height: 8px;
+        }
+
+        .experience-card:hover::after {
+            left: 100%;
+        }
+
+        .experience-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover h3 {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .experience-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .experience-link:hover {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            transform: scale(1.05);
+        }
+
+        .features {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 20px 40px rgba(102,126,234,0.2);
+        }
+
+        .feature:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .feature:hover .feature-icon {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(102,126,234,0.5));
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .testimonials {
+            padding: 5rem 2rem;
+            background: #fff;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 1rem;
+            box-shadow: 0 20px 40px rgba(102,126,234,0.3);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.1);
+            font-family: serif;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 20px 40px rgba(102,126,234,0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 25px 50px rgba(102,126,234,0.4);
+                transform: scale(1.02);
+            }
+        }
+
+        .testimonial p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .footer p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .experiences-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <section class="hero">
+        <!-- AQUÍ VA TU VIDEO - COPIA ESTA ESTRUCTURA -->
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="TU_VIDEO.mp4" type="video/mp4">
+            <source src="TU_VIDEO.webm" type="video/webm">
+            <!-- Reemplaza "TU_VIDEO.mp4" con la ruta de tu video -->
+        </video>
+        <div class="hero-video-overlay"></div>
+        <!-- FIN DEL VIDEO -->
+        
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Descubre el Mundo</h1>
+            <p>Experiencias únicas que transformarán tu forma de viajar</p>
+            <a href="#experiencias" class="cta-button">Explorar Ahora</a>
+        </div>
+    </section>
 
-  <section class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="https://cdn.videvo.net/videvo_files/video/free/2018-04/small_watermarked/180216_01_City_Timelapse_4k_003_preview.webm" type="video/webm" />
-      <source src="https://cdn.videvo.net/videvo_files/video/free/2018-04/small_watermarked/180216_01_City_Timelapse_4k_003_preview.mp4" type="video/mp4" />
-      Tu navegador no soporta video.
-    </video>
-    <div class="hero-content">
-      <h1>Explora Turquía</h1>
-      <p>Descubre tours, excursiones y experiencias únicas con solo un clic.</p>
-      <a href="#tours" class="btn-primary">Ver Tours Destacados</a>
-    </div>
-  </section>
+    <section class="section" id="experiencias">
+        <h2>Experiencias Imperdibles</h2>
+        <div class="experiences-grid">
+            <div class="experience-card">
+                <h3>🏛️ Tours Históricos</h3>
+                <p>Descubre la historia y cultura de los destinos más fascinantes del mundo con guías expertos locales.</p>
+                <a href="https://www.getyourguide.com/historical-tours/" class="experience-link" target="_blank">Ver Tours</a>
+            </div>
+            
+            <div class="experience-card">
+                <h3>🌊 Aventuras Acuáticas</h3>
+                <p>Sumérgete en experiencias únicas en el mar, lagos y ríos. Desde snorkel hasta deportes extremos.</p>
+                <a href="https://www.getyourguide.com/water-activities/" class="experience-link" target="_blank">Explorar</a>
+            </div>
+            
+            <div class="experience-card">
+                <h3>🍷 Experiencias Gastronómicas</h3>
+                <p>Saborea la auténtica cocina local con tours gastronómicos y cenas exclusivas.</p>
+                <a href="https://www.getyourguide.com/food-tours/" class="experience-link" target="_blank">Degustar</a>
+            </div>
+            
+            <div class="experience-card">
+                <h3>🎨 Arte y Cultura</h3>
+                <p>Explora museos, galerías y sitios culturales con acceso preferencial y guías especializados.</p>
+                <a href="https://www.getyourguide.com/museums-art/" class="experience-link" target="_blank">Descubrir</a>
+            </div>
+            
+            <div class="experience-card">
+                <h3>🏔️ Aventura Extrema</h3>
+                <p>Vive la adrenalina al máximo con actividades de aventura en entornos naturales espectaculares.</p>
+                <a href="https://www.getyourguide.com/adventure-sports/" class="experience-link" target="_blank">Aventurar</a>
+            </div>
+            
+            <div class="experience-card">
+                <h3>🌆 Experiencias Nocturnas</h3>
+                <p>Descubre el lado nocturno de las ciudades con tours, shows y experiencias únicas después del atardecer.</p>
+                <a href="https://www.getyourguide.com/nightlife/" class="experience-link" target="_blank">Vivir la Noche</a>
+            </div>
+        </div>
+    </section>
 
-  <section class="tours-section" id="tours">
-    <h2>Tours y Experiencias Populares en Turquía</h2>
-    <div class="tours-grid">
+    <section class="features">
+        <div class="section">
+            <h2>¿Por Qué Elegirnos?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <span class="feature-icon">⭐</span>
+                    <h3>Calidad Garantizada</h3>
+                    <p>Solo trabajamos con los mejores proveedores y guías certificados para asegurar experiencias excepcionales.</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">💰</span>
+                    <h3>Mejor Precio</h3>
+                    <p>Ofrecemos los precios más competitivos del mercado con ofertas exclusivas para nuestros usuarios.</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">🔒</span>
+                    <h3>Reserva Segura</h3>
+                    <p>Plataforma 100% segura con cancelación gratuita y soporte al cliente 24/7.</p>
+                </div>
+                
+                <div class="feature">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Cobertura Global</h3>
+                    <p>Más de 1000 destinos en todo el mundo con experiencias locales auténticas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="tour-card">
-        <img
-          src="https://cdn.getyourguide.com/img/location/5cd5e7cb3f7b9.jpeg/88.jpg"
-          alt="Excursión por el Bósforo"
-          class="tour-image"
-        />
-        <div class="tour-info">
-          <h3 class="tour-title">Crucero por el Bósforo en Estambul</h3>
-          <p class="tour-desc">Navega entre dos continentes y disfruta vistas inolvidables de Estambul.</p>
-          <a href="https://www.getyourguide.com/istanbul-l57/bosphorus-cruise-t9823/" target="_blank" class="tour-link" rel="noopener noreferrer">Reserva Ahora</a>
-        </div>
-      </div>
+    <section class="testimonials">
+        <div class="section">
+            <h2>Lo Que Dicen Nuestros Viajeros</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"Una experiencia increíble. El tour gastronómico en Barcelona superó todas mis expectativas. ¡Definitivamente volveré a reservar!"</p>
+                    <div class="testimonial-author">- María González, España</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="tour-card">
-        <img
-          src="https://cdn.getyourguide.com/img/location/5c9e3a08788c7.jpeg/88.jpg"
-          alt="Excursión en Capadocia"
-          class="tour-image"
-        />
-        <div class="tour-info">
-          <h3 class="tour-title">Paseo en Globo Aerostático en Capadocia</h3>
-          <p class="tour-desc">Vuela sobre formaciones rocosas y paisajes mágicos al amanecer.</p>
-          <a href="https://www.getyourguide.com/cappadocia-l1821/hot-air-balloon-ride-t10229/" target="_blank" class="tour-link" rel="noopener noreferrer">Reserva Ahora</a>
-        </div>
-      </div>
+    <section class="footer">
+        <div class="footer-content">
+            <h3>¡Tu Próxima Aventura Te Espera!</h3>
+            <p>No esperes más para vivir experiencias únicas que recordarás para toda la vida.</p>
+            <a href="https://www.getyourguide.com" class="cta-button" target="_blank">Comenzar Ahora</a>
+        </div>
+    </section>
 
-      <div class="tour-card">
-        <img
-          src="https://cdn.getyourguide.com/img/location/5c99cba46822e.jpeg/88.jpg"
-          alt="Tour por Pamukkale"
-          class="tour-image"
-        />
-        <div class="tour-info">
-          <h3 class="tour-title">Excursión a las Piscinas de Pamukkale</h3>
-          <p class="tour-desc">Relájate en las piscinas termales y maravíllate con su paisaje blanco.</p>
-          <a href="https://www.getyourguide.com/pamukkale-l3838/pamukkale-day-tour-t10997/" target="_blank" class="tour-link" rel="noopener noreferrer">Reserva Ahora</a>
-        </div>
-      </div>
+    <script>
+        // Animación suave para los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-      <div class="tour-card">
-        <img
-          src="https://cdn.getyourguide.com/img/location/5c9c283f00602.jpeg/88.jpg"
-          alt="Tour de Estambul a Éfeso"
-          class="tour-image"
-        />
-        <div class="tour-info">
-          <h3 class="tour-title">Excursión de Día a Éfeso desde Estambul</h3>
-          <p class="tour-desc">Explora ruinas históricas y maravillas arqueológicas de la antigua Éfeso.</p>
-          <a href="https://www.getyourguide.com/istanbul-l57/ephesus-day-trip-from-istanbul-t57396/" target="_blank" class="tour-link" rel="noopener noreferrer">Reserva Ahora</a>
-        </div>
-      </div>
+        // Efecto parallax suave en el hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
 
-    </div>
-  </section>
+        // Animación de entrada para las tarjetas
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-  <footer>
-    &copy; 2025 Explora Turquía • Reservas seguras con Get Your Guide
-  </footer>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
+        // Animación de las tarjetas al hacer hover en elementos vecinos
+        const cards = document.querySelectorAll('.experience-card');
+        cards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                cards.forEach((otherCard, otherIndex) => {
+                    if (otherIndex !== index) {
+                        otherCard.style.transform = 'translateY(5px) scale(0.95)';
+                        otherCard.style.opacity = '0.7';
+                    }
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                cards.forEach((otherCard) => {
+                    otherCard.style.transform = '';
+                    otherCard.style.opacity = '';
+                });
+            });
+        });
+
+        // Efecto de partículas flotantes adicionales
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = Math.random() * 6 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = `rgba(102, 126, 234, ${Math.random() * 0.3 + 0.1})`;
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            
+            document.body.appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 6000 + 4000,
+                easing: 'linear'
+            });
+            
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Crear partículas cada cierto tiempo
+        setInterval(createParticle, 3000);
+
+        // Efecto de mouse trail
+        const trail = [];
+        const trailLength = 10;
+
+        document.addEventListener('mousemove', (e) => {
+            trail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
+            
+            if (trail.length > trailLength) {
+                trail.shift();
+            }
+            
+            trail.forEach((point, index) => {
+                const age = Date.now() - point.time;
+                if (age < 1000) {
+                    const div = document.createElement('div');
+                    div.style.position = 'fixed';
+                    div.style.left = point.x + 'px';
+                    div.style.top = point.y + 'px';
+                    div.style.width = '4px';
+                    div.style.height = '4px';
+                    div.style.background = `rgba(102, 126, 234, ${1 - age / 1000})`;
+                    div.style.borderRadius = '50%';
+                    div.style.pointerEvents = 'none';
+                    div.style.zIndex = '9999';
+                    div.style.transform = 'translate(-50%, -50%)';
+                    
+                    document.body.appendChild(div);
+                    
+                    setTimeout(() => div.remove(), 100);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
